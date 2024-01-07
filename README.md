@@ -1,3 +1,13 @@
+Информация для запуска приложения:
+URL веб приложения: `localhost:8080`
+
+Пользователи по умолчанию:
+
+| Username | Password |      Email      | Role  |
+|:--------:|:--------:|:---------------:|:-----:|
+|   user   |   user   |  user@user.ru   | USER  |
+|  admin   |  admin   | admin@admin.ru  | ADMIN |
+
 # Практическая задача
 
 ### Условие:
