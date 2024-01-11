@@ -12,7 +12,7 @@ public interface UserService {
 
     boolean update(User updatedUser, List<Role> roles);
 
-    User readUser(long id);
+    User findUser(long id);
 
     void delete(long id);
 

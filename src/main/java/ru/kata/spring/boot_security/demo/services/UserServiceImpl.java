@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    @Transactional(readOnly = true)
     public List<User> getAll() {
         return userRepository.findAll();
     }
@@ -58,6 +57,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
         return true;
     }
 
+    @Override
     public void createRolesIfNotExist() {
         if (roleRepository.findByName("ROLE_USER").isEmpty()) {
             roleRepository.save(new Role(1L, "ROLE_USER"));
@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserDetailsService, UserService {
     }
 
     @Override
-    public User readUser(long id) {
+    public User findUser(long id) {
         return userRepository.findById(id).orElseThrow(() ->
                 new UsernameNotFoundException("User with id = " + id + " not exist"));
     }

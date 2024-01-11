@@ -60,7 +60,7 @@ public class AdminController {
     @GetMapping("/user-update")
     public String showFormForUpdate(@RequestParam("id") long id,
                                     Model model) {
-        User user = userServiceImpl.readUser(id);
+        User user = userServiceImpl.findUser(id);
         model.addAttribute("user", user);
         List<Role> roles = roleRepository.findAll();
         model.addAttribute("allRoles", roles);

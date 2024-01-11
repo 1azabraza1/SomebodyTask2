@@ -21,7 +21,7 @@ public class UserController {
     public String showUser(@RequestParam(name = "id", required = false) Long id, Model model, Principal principal) {
         User user;
         if (id != null) {
-            user = userServiceImpl.readUser(id);
+            user = userServiceImpl.findUser(id);
         } else {
             String username = principal.getName();
             user = userServiceImpl.findByUsername(username);
