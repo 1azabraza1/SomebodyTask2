@@ -50,9 +50,9 @@ public class AdminController {
     public String createUser(@ModelAttribute("user") @Valid User user,
                              BindingResult bindingResult) {
         userValidator.validate(user, bindingResult);
-        if (bindingResult.hasErrors())
+        if (bindingResult.hasErrors()) {
             return "add";
-
+        }
         userServiceImpl.add(user);
         return "redirect:/admin";
     }

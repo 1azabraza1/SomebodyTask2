@@ -1,9 +1,9 @@
 package ru.kata.spring.boot_security.demo.controllers;
 
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import ru.kata.spring.boot_security.demo.entities.User;
 import ru.kata.spring.boot_security.demo.services.UserServiceImpl;
 
@@ -18,13 +18,10 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String showUser(@RequestParam(name = "id", required = false) Long id, Model model, Principal principal) {
-        User user;
-        if (id != null) {
-            user = userServiceImpl.findUser(id);
-        } else {
-            String username = principal.getName();
-            user = userServiceImpl.findByUsername(username);
+    public String showUser(Model model, Principal principal) {
+        User user = userServiceImpl.findByUsername(principal.getName());
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
         }
         model.addAttribute("user", user);
         return "user";
