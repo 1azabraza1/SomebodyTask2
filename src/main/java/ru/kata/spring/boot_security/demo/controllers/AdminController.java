@@ -33,7 +33,7 @@ public class AdminController {
     }
 
     @GetMapping
-    public String allUsers(Model model) {
+    public String getUsers(Model model) {
         List<User> users = userServiceImpl.getAll();
         model.addAttribute("users", users);
         return "user-list";
